@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float playerJumpPower=10f;
     [SerializeField] float playerDashPower = 100f;
     Rigidbody2D PlayerRigid;
-    private bool isGrounded;
+    [HideInInspector] public static bool isGrounded;
     [SerializeField] Transform groundCheck;
     [SerializeField] float checkGroundRadius;
     public LayerMask whatIsGround;
@@ -17,9 +17,7 @@ public class PlayerMove : MonoBehaviour
     bool faceRight = true;
     [SerializeField] float dashTime = 1f;
     float dTimer;
-    bool isDash = false;
-
-
+    [HideInInspector] public static bool Dashing;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +33,6 @@ public class PlayerMove : MonoBehaviour
         Move();
         Dash();
         Jump();
-        Debug.Log(isDash);
-
     }
 
     private void FixedUpdate()
@@ -70,8 +66,10 @@ public class PlayerMove : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");        //Recieve Horizontal Input
 
-        if(!isDash) //to prevent Jerky movement because Dash and Move use same rigidbody element
+        if (!Dashing)
+        {//to prevent Jerky movement because Dash and Move use same rigidbody element
             PlayerRigid.velocity = new Vector2(h * playerSpeed, PlayerRigid.velocity.y);    //use (h_input*speed) to change player rigidbody velocity , use exited y velocity 
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         ///*note* "Freeze Z rotation in Rigidbody2D to prevent falling over"(in unity inspector)///
@@ -89,17 +87,17 @@ public class PlayerMove : MonoBehaviour
     {
         /// 0 is considered a positive number by Unity so we can't use Mathf.Sign to determined Dash direction.///
         /// add velocity alone will make player telepot , we use timer to prevent that.///
-        if (Input.GetKeyDown(KeyCode.LeftShift)) isDash = true;
+        if (Input.GetKeyDown(KeyCode.LeftShift)) Dashing = true;
 
-        if (isDash)
+        if (Dashing)
         {
-            if(faceRight) PlayerRigid.velocity = new Vector2(playerDashPower * dTimer,PlayerRigid.velocity.y);
-            else if(!faceRight) PlayerRigid.velocity = new Vector2(-playerDashPower * dTimer, PlayerRigid.velocity.y);
+            if(faceRight) PlayerRigid.velocity = new Vector2(playerDashPower * dTimer,PlayerRigid.velocity.y+0.1f);
+            else if(!faceRight) PlayerRigid.velocity = new Vector2(-playerDashPower * dTimer, PlayerRigid.velocity.y + 0.1f);
             dTimer -= Time.deltaTime;
             if(dTimer <= 0 )
             {
                 ResetDashTimer();
-                isDash = false;
+                Dashing = false;
             }
         }
 

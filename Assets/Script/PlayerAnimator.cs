@@ -6,6 +6,9 @@ public class PlayerAnimator : MonoBehaviour
 {
     PlayerMove playermove;
     Animator anim;
+    [SerializeField] GameObject dashEffect;
+    [SerializeField] float dashTimer;
+    [SerializeField] int dashQuantity;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,15 @@ public class PlayerAnimator : MonoBehaviour
         ///Jump Animation///
         bool jump = Input.GetButtonDown("Jump");
         anim.SetBool("isJump", jump == true);
+        anim.SetBool("isGround", PlayerMove.isGrounded);
 
+        ///Dash Animation///
+        anim.SetBool("isDash", PlayerMove.Dashing);
+        //if (PlayerMove.Dashing) 
+
+    }
+    void DashEffect()
+    {
+        Instantiate(dashEffect, transform.position, Quaternion.identity);
     }
 }
