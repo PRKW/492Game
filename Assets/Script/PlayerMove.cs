@@ -39,14 +39,11 @@ public class PlayerMove : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkGroundRadius,whatIsGround);   // calculate collider using OverLabCircle(position,radius,layer)
         FaceCheck();
-        Debug.Log(dTimer);
-
-        
-
+       // Debug.Log(dTimer);
     }
 
 
-    private void OnDrawGizmosSelected() //draw circle base on groundcheck.position and collider radius
+    void OnDrawGizmosSelected() //draw circle base on groundcheck.position and collider radius
     {
         Gizmos.color = Color.black; //Select wire color
         Gizmos.DrawWireSphere(groundCheck.position,checkGroundRadius);    //draw WireSphere base on child Position,radius that set in unity inspector

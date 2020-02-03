@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -54,9 +55,15 @@ TagManager:
   - name: DecorateLayer
     uniqueID: 3298909895
     locked: 0
+  - name: PlayerEffect
+    uniqueID: 2705483623
+    locked: 0
   - name: FloorLayer
     uniqueID: 794015261
     locked: 0
   - name: FrontLayer
     uniqueID: 3154719519
+    locked: 0
+  - name: UI
+    uniqueID: 2873836461
     locked: 0

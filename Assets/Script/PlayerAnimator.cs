@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    PlayerMove playermove;
     Animator anim;
     [SerializeField] GameObject dashEffect;
-    [SerializeField] float dashTimer;
-    [SerializeField] int dashQuantity;
 
     // Start is called before the first frame update
     void Start()
     {
-        playermove = GetComponent<PlayerMove>();
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        
     }
     private void FixedUpdate()
     {
@@ -34,11 +29,13 @@ public class PlayerAnimator : MonoBehaviour
 
         ///Dash Animation///
         anim.SetBool("isDash", PlayerMove.Dashing);
-        //if (PlayerMove.Dashing) 
-
+        if(PlayerMove.Dashing)
+        {
+            Instantiate(dashEffect, transform.position, Quaternion.identity);
+        }
     }
     void DashEffect()
     {
-        Instantiate(dashEffect, transform.position, Quaternion.identity);
+
     }
 }
