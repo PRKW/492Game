@@ -74,16 +74,16 @@ public class PlayerMove : MonoBehaviour
 
         ///FlipSprite///
         if (Mathf.Abs(h) > Mathf.Epsilon)        //if player is moving horizontally 
-                                                 //*note* Epsilon is smallest possible float near zero mostly use to avoid float rounding error 
+                                                 //*note* Epsilon is smallest possible float near zero mostly use to avoid float rounding error (somehow)
         {
-            transform.localScale = new Vector2(Mathf.Sign(h), 1f);  //flip sprite base on horizontal sign, keep y as it is
+            transform.localScale = new Vector2(Mathf.Sign(h), 1f);  //flip sprite base on horizontal sign, keep y=1 as it is
         }
     }   //Move Function *use Dash*
 
     void Dash()
     {
         /// 0 is considered a positive number by Unity so we can't use Mathf.Sign to determined Dash direction.///
-        /// add velocity alone will make player telepot , we use timer to prevent that.///
+        /// add velocity alone will make player telepot , i use timer to prevent that.///
         if (Input.GetKeyDown(KeyCode.LeftShift)) Dashing = true;
 
         if (Dashing)

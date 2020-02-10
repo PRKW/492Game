@@ -16,6 +16,11 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        Attack();
+    }
+
+    void Attack()
+    {
         if (Input.GetKeyDown(KeyCode.Z) && !attacking)
         {
             attacking = true;

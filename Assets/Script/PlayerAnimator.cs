@@ -31,7 +31,7 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("isDash", PlayerMove.Dashing);
         if(PlayerMove.Dashing)
         {
-            Instantiate(dashEffect, transform.position, Quaternion.identity);
+            Instantiate(dashEffect, transform.position, Quaternion.identity); //instantiate dash effect sprite
         }
     }
     void DashEffect()

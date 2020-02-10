@@ -62,10 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\AttackTrigger.cs" />
+    <Compile Include="Assets\Script\CanvasScript\GameSession.cs" />
     <Compile Include="Assets\Script\CanvasScript\UIScript.cs" />
     <Compile Include="Assets\Script\DashEffect.cs" />
-    <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\EnemyScript\Enemy.cs" />
+    <Compile Include="Assets\Script\EnemyScript\EnemyMove.cs" />
+    <Compile Include="Assets\Script\EnemyScript\EnemyMoveV2.cs" />
     <Compile Include="Assets\Script\PlayerAnimator.cs" />
     <Compile Include="Assets\Script\PlayerAttack.cs" />
     <Compile Include="Assets\Script\PlayerInfo.cs" />

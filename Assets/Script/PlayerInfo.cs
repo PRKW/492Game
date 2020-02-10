@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    int playerHP;
-    int playerCombo;
-    int playerDamage;
+    float invincibleTime;
+    public int playerDmg;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerDmg = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
