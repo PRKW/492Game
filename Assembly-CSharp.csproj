@@ -66,7 +66,9 @@
     <Compile Include="Assets\Script\CanvasScript\UIScript.cs" />
     <Compile Include="Assets\Script\DashEffect.cs" />
     <Compile Include="Assets\Script\EnemyScript\Enemy.cs" />
+    <Compile Include="Assets\Script\EnemyScript\EnemyAIPartControl.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMove.cs" />
+    <Compile Include="Assets\Script\EnemyScript\EnemyMove3.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMoveV2.cs" />
     <Compile Include="Assets\Script\PlayerAnimator.cs" />
     <Compile Include="Assets\Script\PlayerAttack.cs" />
@@ -294,6 +296,9 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>C:/Users/eieizaa/OneDrive/492Game/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.19f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -640,6 +645,20 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.19f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{CC6703D9-6CA0-6C8E-DB65-D08D95020027}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{58C8164E-F06A-6751-4EE0-7CF366BB3F02}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{098BB4F9-B7FE-3F0D-0DCC-EDECAAFADB1F}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
