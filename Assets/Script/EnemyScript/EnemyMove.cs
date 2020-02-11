@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     Rigidbody2D enemyRigid;
-    float walkSpeed = 100f;
+    float walkSpeed = 200f;
     // Start is called before the first frame update
     void Start()
     {

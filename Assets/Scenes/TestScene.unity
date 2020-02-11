@@ -950,7 +950,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -966,7 +966,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1007,7 +1007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572495496}
   - component: {fileID: 572495497}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AttackTrigger
   m_TagString: AttackTrigger
   m_Icon: {fileID: 0}
@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 581449412}
   - component: {fileID: 581449411}
   - component: {fileID: 581449410}
+  - component: {fileID: 581449413}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -1151,6 +1152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 5
+  bloodEffect: {fileID: 7749947106311265201, guid: 18054ae26ce10414881032f5ff9d6f81,
+    type: 3}
 --- !u!70 &581449410
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1204,6 +1207,54 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &581449413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581449406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd438dd108a0f284aa931a2da434f1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 86f19195d8afa83448c31596ef830811, type: 2}
+    m_AmplitudeGain: 0.1
+    m_FrequencyGain: 100
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_IgnoreTag: 
+  m_UseImpactDirection: 0
+  m_ScaleImpactWithMass: 0
+  m_ScaleImpactWithSpeed: 0
 --- !u!1 &624380923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,8 +1735,8 @@ GameObject:
   m_Component:
   - component: {fileID: 772054448}
   - component: {fileID: 772054451}
-  - component: {fileID: 772054450}
   - component: {fileID: 772054449}
+  - component: {fileID: 772054450}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -1779,6 +1830,7 @@ GameObject:
   - component: {fileID: 802795771}
   - component: {fileID: 802795770}
   - component: {fileID: 802795772}
+  - component: {fileID: 802795773}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -1834,7 +1886,7 @@ Transform:
   m_Children:
   - {fileID: 772054448}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &802795772
 MonoBehaviour:
@@ -1848,6 +1900,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8328d560211e8334ea293660e1f411c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &802795773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802795769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 1
 --- !u!1 &944014729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1962,7 @@ Transform:
   - {fileID: 1321587165}
   - {fileID: 85543930}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1002537420
 GameObject:
@@ -2886,6 +2953,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 5
+  bloodEffect: {fileID: 7749947106311265201, guid: 18054ae26ce10414881032f5ff9d6f81,
+    type: 3}
 --- !u!70 &1071943023
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -26515,6 +26584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 5
+  bloodEffect: {fileID: 0}
 --- !u!114 &2063823251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26582,7 +26652,7 @@ PrefabInstance:
     - target: {fileID: 7943068872307269076, guid: a06e71b3f27182f4db91e54ca680f74a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7943068872307269076, guid: a06e71b3f27182f4db91e54ca680f74a,
         type: 3}

@@ -7,7 +7,7 @@ public class EnemyMoveV2 : MonoBehaviour
     bool playerIsInRadius;
     [SerializeField] float playerCheckRadius;
     [SerializeField] LayerMask whatIsPlayer;
-    float walkSpeed = 100f;
+    float walkSpeed = 200f;
     Transform playerTarget;
     float moveDirection;
     Rigidbody2D enemyRigid;

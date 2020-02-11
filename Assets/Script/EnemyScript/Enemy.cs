@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     Animator anim;
     bool getHit;
     int playerDmg;
+    [SerializeField] GameObject bloodEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class Enemy : MonoBehaviour
         {
             FindObjectOfType<GameSession>().AddCombo(1);
             TakeDamage(playerDmg);
-
+            Instantiate(bloodEffect);
             if (enemyHealth <= 0)
             {
                 EnemyDead();
