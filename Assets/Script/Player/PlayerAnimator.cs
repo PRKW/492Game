@@ -23,16 +23,13 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("isWalk", h != 0);
 
         ///Jump Animation///
-        bool jump = Input.GetButtonDown("Jump");
-        anim.SetBool("isJump", jump == true);
         anim.SetBool("isGround", PlayerMove.isGrounded);
 
         ///Dash Animation///
-        anim.SetBool("isDash", PlayerMove.Dashing);
-        if(PlayerMove.Dashing)
-        {
-            Instantiate(dashEffect, transform.position, Quaternion.identity); //instantiate dash effect sprite
-        }
+        //anim.SetBool("isDash", PlayerMove.Dashing);
+        
+        ///Weapon State///
+        
     }
     void DashEffect()
     {

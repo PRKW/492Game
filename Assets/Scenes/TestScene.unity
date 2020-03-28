@@ -1600,6 +1600,8 @@ GameObject:
   - component: {fileID: 694518324}
   - component: {fileID: 694518328}
   - component: {fileID: 694518329}
+  - component: {fileID: 694518330}
+  - component: {fileID: 694518331}
   m_Layer: 0
   m_Name: DKIdle1
   m_TagString: Untagged
@@ -1750,6 +1752,33 @@ MonoBehaviour:
     m_Bits: 256
   extraJump: 1
   dashTime: 1
+--- !u!114 &694518330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694518323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d229f4095c941418bb4fe506f36fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDmg: 0
+  playerWeapon: 
+--- !u!114 &694518331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694518323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0321622cc755454fa6665bd93ca870d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 1136833239}
 --- !u!1 &716017485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6409,6 +6438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDmg: 2
+  playerWeapon: 
 --- !u!1 &1528799850
 GameObject:
   m_ObjectHideFlags: 0

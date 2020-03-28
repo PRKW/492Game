@@ -115,6 +115,11 @@ public class PlayerMove : MonoBehaviour
         }
     }   //Jump function
 
+    void AttackMovement() //a lot of special attack make player move so i code here
+    {
+
+    }
+
     void ResetJump() //set isJump = extraJump+1 when called
     {
         isJumped = extraJump + 1;

@@ -62,19 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\CameraShake\CameraShake.cs" />
     <Compile Include="Assets\Script\CanvasScript\GameSession.cs" />
     <Compile Include="Assets\Script\CanvasScript\UIScript.cs" />
-    <Compile Include="Assets\Script\DashEffect.cs" />
     <Compile Include="Assets\Script\EnemyScript\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyAIPartControl.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMove.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMove3.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMoveV2.cs" />
-    <Compile Include="Assets\Script\PlayerAnimator.cs" />
-    <Compile Include="Assets\Script\PlayerAttack.cs" />
-    <Compile Include="Assets\Script\PlayerInfo.cs" />
-    <Compile Include="Assets\Script\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Player\DashEffect.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAnimator.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Script\Player\PlayerMove.cs" />
     <None Include="Assets\Sprites\UI\Pixel Font - Tripfive\_README.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/eieizaa/OneDrive/492Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
