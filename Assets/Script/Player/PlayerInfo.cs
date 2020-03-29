@@ -6,8 +6,8 @@ public class PlayerInfo : MonoBehaviour
 {
     float invincibleTime;
     [HideInInspector] public int playerDmg;
-    [HideInInspector] public string playerWeapon;
-    string attackType;
+    [HideInInspector] public static string playerWeapon;
+    public static string attackType;
 
     // Start is called before the first frame update
     private void Awake()
@@ -23,7 +23,8 @@ public class PlayerInfo : MonoBehaviour
     void Update()
     {
         UpdatePlayerInfo();
-        Debug.Log(attackType);
+
+       // Debug.Log(attackType);
     }
     void UpdatePlayerInfo()
     {
@@ -41,6 +42,12 @@ public class PlayerInfo : MonoBehaviour
     public bool Down()
     {
         return (Input.GetKey(KeyCode.DownArrow));
+    }
+
+    public bool Mid()
+    {
+        if (!Up() && !Down()) return true;
+        else return false;
     }
     void UpdateWeaponInfo()
     {
@@ -74,7 +81,7 @@ public class PlayerInfo : MonoBehaviour
     }
 
     void AttacktypeInfo() // determine attack type // 
-    // 1st letter -> G = GreatSword , S = Spear , D = DuelKnife /// 2nd letter -> N = Normal, S = Special /// 3rd letter -> N = Neutral , U = UP , D = Down /// 4th  letter A = Air , if none = Ground;
+    // 1st letter -> G = Greatsword , P = sPear , K = duelKnife /// 2nd letter -> M = Mid , U = UP , D = Down/// 3rd letter ->  N = Normal, S = Special /// 4th  letter A = Air , if none = Ground;
     {
         if (playerWeapon == "GreatSword")
         {
@@ -84,13 +91,13 @@ public class PlayerInfo : MonoBehaviour
                 {
                     if (Up()) attackType = "GUN";
                     else if (Down()) attackType = "GDN";
-                    else attackType = "GNN";
+                    else if(Mid()) attackType = "GMN";
                 }
                 else
                 {
                     if (Up()) attackType = "GUNA";
                     else if (Down()) attackType = "GDNA";
-                    else attackType = "GNNA";
+                    else if (Mid()) attackType = "GMNA";
                 }
             }
             else if (PlayerAttack.specialAttack)
@@ -99,13 +106,13 @@ public class PlayerInfo : MonoBehaviour
                 {
                     if (Up()) attackType = "GUS";
                     else if (Down()) attackType = "GDS";
-                    else attackType = "GSN";
+                    else if (Mid()) attackType = "GMS";
                 }
                 else
                 {
                     if (Up()) attackType = "GUSA";
                     else if (Down()) attackType = "GDSA";
-                    else attackType = "GSNA";
+                    else if (Mid()) attackType = "GMSA";
                 }
             }
             else attackType = null;
@@ -116,30 +123,30 @@ public class PlayerInfo : MonoBehaviour
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "SUN";
-                    else if (Down()) attackType = "SDN";
-                    else attackType = "SNN";
+                    if (Up()) attackType = "PUN";
+                    else if (Down()) attackType = "PDN";
+                    else if (Mid()) attackType = "PMN";
                 }
                 else
                 {
-                    if (Up()) attackType = "SUNA";
-                    else if (Down()) attackType = "SDNA";
-                    else attackType = "SNNA";
+                    if (Up()) attackType = "PUNA";
+                    else if (Down()) attackType = "PDNA";
+                    else if (Mid()) attackType = "PMNA";
                 }
             }
             else if (PlayerAttack.specialAttack)
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "SUS";
-                    else if (Down()) attackType = "SDS";
-                    else attackType = "SSN";
+                    if (Up()) attackType = "PUS";
+                    else if (Down()) attackType = "PDS";
+                    else if (Mid()) attackType = "PMS";
                 }
                 else
                 {
-                    if (Up()) attackType = "SUSA";
-                    else if (Down()) attackType = "SDSA";
-                    else attackType = "SSNA";
+                    if (Up()) attackType = "PUSA";
+                    else if (Down()) attackType = "PDSA";
+                    else if (Mid()) attackType = "PMSA";
                 }
             }
             else attackType = null;
@@ -150,30 +157,30 @@ public class PlayerInfo : MonoBehaviour
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "DUN";
-                    else if (Down()) attackType = "DDN";
-                    else attackType = "DNN";
+                    if (Up()) attackType = "KUN";
+                    else if (Down()) attackType = "KDN";
+                    else if (Mid()) attackType = "KMN";
                 }
                 else
                 {
-                    if (Up()) attackType = "GUNA";
-                    else if (Down()) attackType = "DDNA";
-                    else attackType = "DNNA";
+                    if (Up()) attackType = "KUNA";
+                    else if (Down()) attackType = "KDNA";
+                    else if (Mid()) attackType = "KMNA";
                 }
             }
             else if (PlayerAttack.specialAttack)
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "DUS";
-                    else if (Down()) attackType = "DDS";
-                    else attackType = "DSN";
+                    if (Up()) attackType = "KUS";
+                    else if (Down()) attackType = "KDS";
+                    else if (Mid()) attackType = "KMS";
                 }
                 else
                 {
-                    if (Up()) attackType = "DUSA";
-                    else if (Down()) attackType = "DDSA";
-                    else attackType = "DSNA";
+                    if (Up()) attackType = "KUSA";
+                    else if (Down()) attackType = "KDSA";
+                    else if (Mid()) attackType = "KMSA";
                 }
             }
             else attackType = null;
