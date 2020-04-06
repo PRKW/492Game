@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] float playerSpeed=10f;
+    [SerializeField] float playerSpeed=500f;
+    float playerSpeedReserve;
     [SerializeField] float playerJumpPower=10f;
-    [SerializeField] float playerDashPower = 100f;
+    [SerializeField] float playerDashPower = 5000f;
     Rigidbody2D PlayerRigid;
     [HideInInspector] public static bool isGrounded;
     [SerializeField] Transform groundCheck;
@@ -15,13 +16,25 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] int extraJump;
     int isJumped;
     bool faceRight = true;
-    [SerializeField] float dashTime = 1f;
+    [SerializeField] float dashTime = 0.3f;
     float dTimer;
-    [HideInInspector] public static bool Dashing;
+    [HideInInspector] public static bool dashing;
+    bool done;
+    float floatTime;
+    float floatTimer;
+    bool isFloating;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        floatTime = 0.05f;
+        isFloating = false;
+        done = false;
+        playerSpeedReserve = playerSpeed;
+    }
     void Start()
     {
+        floatTimer = floatTime;
         PlayerRigid = GetComponent<Rigidbody2D>();  // store rigidbody2D into PlayerRigid for convenience
         ResetJump();
         ResetDashTimer();
@@ -30,6 +43,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Move();
         Dash();
         Jump();
@@ -39,7 +53,8 @@ public class PlayerMove : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkGroundRadius,whatIsGround);   // calculate collider using OverLabCircle(position,radius,layer)
         FaceCheck();
-       // Debug.Log(dTimer);
+        AttackMovement();
+        Debug.Log(PlayerRigid.velocity.y);
     }
 
 
@@ -63,9 +78,9 @@ public class PlayerMove : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");        //Recieve Horizontal Input
 
-        if (!Dashing)
+        if (!dashing)
         {//to prevent Jerky movement because Dash and Move use same rigidbody element
-            PlayerRigid.velocity = new Vector2(h * playerSpeed, PlayerRigid.velocity.y);    //use (h_input*speed) to change player rigidbody velocity , use exited y velocity 
+            PlayerRigid.velocity = new Vector2(h * playerSpeed * Time.deltaTime, PlayerRigid.velocity.y);    //use (h_input*speed) to change player rigidbody velocity , use exited y velocity 
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -80,21 +95,22 @@ public class PlayerMove : MonoBehaviour
         }
     }   //Move Function *use Dash*
 
+
     void Dash()
     {
         /// 0 is considered a positive number by Unity so we can't use Mathf.Sign to determined Dash direction.///
         /// add velocity alone will make player telepot , i use timer to prevent that.///
-        if (Input.GetKeyDown(KeyCode.LeftShift)) Dashing = true;
+        if (Input.GetKeyDown(KeyCode.LeftShift)) dashing = true;
 
-        if (Dashing)
+        if (dashing)
         {
-            if(faceRight) PlayerRigid.velocity = new Vector2(playerDashPower * dTimer,PlayerRigid.velocity.y+0.1f);
-            else if(!faceRight) PlayerRigid.velocity = new Vector2(-playerDashPower * dTimer, PlayerRigid.velocity.y + 0.1f);
+            if(faceRight) PlayerRigid.velocity = new Vector2(playerDashPower * dTimer * Time.deltaTime,PlayerRigid.velocity.y+0.1f);
+            else if(!faceRight) PlayerRigid.velocity = new Vector2(-playerDashPower * dTimer * Time.deltaTime, PlayerRigid.velocity.y + 0.1f);
             dTimer -= Time.deltaTime;
             if(dTimer <= 0 )
             {
                 ResetDashTimer();
-                Dashing = false;
+                dashing = false;
             }
         }
 
@@ -117,10 +133,71 @@ public class PlayerMove : MonoBehaviour
 
     void AttackMovement() //a lot of special attack make player move so i code here
     {
+        if(PlayerAttack.pAttacking && isGrounded) // if player attack on ground
+        {
+            if (playerSpeed > 100) playerSpeed -= 50;
+            else if (playerSpeed <= 100) playerSpeed = 100;
+        }
+        else if (PlayerAttack.pAttacking && !isGrounded) // if player attack on air
+        {
+            if (playerSpeed > 70) playerSpeed -= 50;
+            else if (playerSpeed <= 70) playerSpeed = 70;
+            if (!isFloating) isFloating = true;
+
+
+        }
+        else if (!PlayerAttack.pAttacking)
+        {
+            if (playerSpeed <= playerSpeedReserve)
+            {
+                playerSpeed += 15;
+            }
+            // playerSpeed = playerSpeedReserve;
+        }
+
+        if (isFloating)
+        {
+            if (floatTimer > 0 && PlayerRigid.velocity.y < 9)
+            {
+                PlayerRigid.velocity = new Vector2(PlayerRigid.velocity.x, 4f);
+                floatTimer -= Time.deltaTime;
+            }
+            else if(!PlayerAttack.pAttacking)
+            {
+                isFloating = false;
+                floatTimer = floatTime;
+            }
+        }
+        if (PlayerInfo.attackType == "GDSA") // down air attack for greatsword that make player move downward
+        {
+            if (!isGrounded)
+            {
+                PlayerRigid.velocity = new Vector2(PlayerRigid.velocity.x, -10f);
+            }
+        }
+        else if(PlayerInfo.attackType == "KUS") //up attack from ground make playerjump 
+        {
+            PlayerRigid.velocity = Vector2.up * playerJumpPower * 1.5f;
+        }
+        else if(PlayerInfo.attackType == "KDSA")
+        {
+            if (!isGrounded)
+            {
+                if (faceRight) PlayerRigid.velocity = new Vector2(10f, -10f);
+                else PlayerRigid.velocity = new Vector2(-10f, -10f);
+            }
+
+        }
+
+
+        /// ground move that stop movement = GMS , GDS , PUS , PDS , PMN , KDN , KMS ///
+        /// all move on air will make player floaty
+        /// forward movement = PMS*already register as dash move  , GDSA down movement until player touch groud
+
 
     }
 
-    void ResetJump() //set isJump = extraJump+1 when called
+    void ResetJump() //+1 for base jump number then add extrajump number
     {
         isJumped = extraJump + 1;
     }

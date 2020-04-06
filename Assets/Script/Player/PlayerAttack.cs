@@ -11,9 +11,11 @@ public class PlayerAttack : MonoBehaviour
     float attackTimer = 0;
     float attackCd = 0.3f;
     PlayerInfo playerInfo;
+    [HideInInspector] public static bool attackTimerEqual;
     bool up;
     private void Awake()
     {
+        attackTimerEqual = false;
         pAttacking = false;
         specialAttack = false;
         attackTrigger.enabled = false; //make sure that attack collider is disable before game start
@@ -48,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
             if (attackTimer > 0)
             {
                 attackTimer -= Time.deltaTime;
+
             }
             else
             {

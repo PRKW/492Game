@@ -20,6 +20,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
+       // Debug.Log(PlayerInfo.attackType);
     }
     private void FixedUpdate()
     {
@@ -56,6 +57,34 @@ public class PlayerAnimator : MonoBehaviour
         ///Attack State///
         if (PlayerInfo.attackType != null)
         {
+            anim.SetBool("Up", PlayerInfo.attackType.Contains("U"));
+            anim.SetBool("Down", PlayerInfo.attackType.Contains("D"));
+            anim.SetBool("Mid", PlayerInfo.attackType.Contains("M"));
+           // anim.SetBool("Air", PlayerInfo.attackType.Contains("A"));
+            anim.SetBool("NormalAttack", PlayerInfo.attackType.Contains("N"));
+            anim.SetBool("SpecialAttack", PlayerInfo.attackType.Contains("S"));
+
+        }
+        else
+        {
+            anim.SetBool("Up", false);
+            anim.SetBool("Down", false);
+            anim.SetBool("Mid", false);
+           // anim.SetBool("Air", false);
+            anim.SetBool("NormalAttack", false);
+            anim.SetBool("SpecialAttack", false);
+        }
+
+    }
+    void DashEffect()
+    {
+
+    }
+
+    void dumpcode()
+    {
+        if (PlayerInfo.attackType != null)
+        {
             if (PlayerInfo.attackType.Contains("U")) Debug.Log("Up");
             else if (PlayerInfo.attackType.Contains("D")) Debug.Log("Down");
             else if (PlayerInfo.attackType.Contains("M")) Debug.Log("Mid");
@@ -65,17 +94,5 @@ public class PlayerAnimator : MonoBehaviour
             if (PlayerInfo.attackType.Contains("N")) Debug.Log("Normal");
             else if (PlayerInfo.attackType.Contains("S")) Debug.Log("Special");
         }
-
-    }
-    void DashEffect()
-    {
-        if (PlayerInfo.attackType.Contains("U")) Debug.Log("Up");
-        else if (PlayerInfo.attackType.Contains("D")) Debug.Log("Down");
-        else if (PlayerInfo.attackType.Contains("M")) Debug.Log("Mid");
-
-        if (PlayerInfo.attackType.Contains("A")) Debug.Log("Air");
-
-        if (PlayerInfo.attackType.Contains("N")) Debug.Log("Normal");
-        else if (PlayerInfo.attackType.Contains("S")) Debug.Log("Special");
     }
 }

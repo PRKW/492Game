@@ -80,109 +80,60 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    void AttacktypeInfo() // determine attack type // 
+    void AttacktypeInfo() // determine attack type // There are no duplicate character
     // 1st letter -> G = Greatsword , P = sPear , K = duelKnife /// 2nd letter -> M = Mid , U = UP , D = Down/// 3rd letter ->  N = Normal, S = Special /// 4th  letter A = Air , if none = Ground;
+    //*2nd letter -> F = Forward ,use for dash attack //
     {
         if (playerWeapon == "GreatSword")
         {
-            if (PlayerAttack.normalAttack)
+            if (PlayerAttack.specialAttack || PlayerAttack.normalAttack )  // GreatSword has no normal attack so all normal become special
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "GUN";
-                    else if (Down()) attackType = "GDN";
-                    else if(Mid()) attackType = "GMN";
+                    if (Up()) attackType = "GMS"; //no up move so it become mid
+                    else if (Down()) attackType = "GDS";// stop movement and will have bombing
+                    else if (Mid()) attackType = "GMS"; //stop movement and push enemy back
                 }
                 else
                 {
-                    if (Up()) attackType = "GUNA";
-                    else if (Down()) attackType = "GDNA";
-                    else if (Mid()) attackType = "GMNA";
-                }
-            }
-            else if (PlayerAttack.specialAttack)
-            {
-                if (PlayerMove.isGrounded)
-                {
-                    if (Up()) attackType = "GUS";
-                    else if (Down()) attackType = "GDS";
-                    else if (Mid()) attackType = "GMS";
-                }
-                else
-                {
-                    if (Up()) attackType = "GUSA";
-                    else if (Down()) attackType = "GDSA";
-                    else if (Mid()) attackType = "GMSA";
+                    if (Up()) attackType = "GMSA"; // no up air move so it become mid
+                    else if (Down()) attackType = "GDSA"; // *have movement downward 
+                    else if (Mid()) attackType = "GMSA"; //nothing special
                 }
             }
             else attackType = null;
         }
-        if (playerWeapon == "Spear")
+        if (playerWeapon == "Spear") // spear has no addition air attack
         {
-            if (PlayerAttack.normalAttack)
+            if (PlayerAttack.specialAttack || PlayerAttack.normalAttack)
             {
                 if (PlayerMove.isGrounded)
                 {
-                    if (Up()) attackType = "PUN";
-                    else if (Down()) attackType = "PDN";
-                    else if (Mid()) attackType = "PMN";
-                }
-                else
-                {
-                    if (Up()) attackType = "PUNA";
-                    else if (Down()) attackType = "PDNA";
-                    else if (Mid()) attackType = "PMNA";
+                    if (Up()) attackType = "PUS"; //stop movement and push enemy up+slightly forward
+                    else if (Down() && PlayerMove.isGrounded) attackType = "PDS"; // stop movement and will have something bombing
+                    else if (Mid()) attackType = "PMN"; // Change special to normal because lazy to change anim , stop movement
                 }
             }
-            else if (PlayerAttack.specialAttack)
-            {
-                if (PlayerMove.isGrounded)
-                {
-                    if (Up()) attackType = "PUS";
-                    else if (Down()) attackType = "PDS";
-                    else if (Mid()) attackType = "PMS";
-                }
-                else
-                {
-                    if (Up()) attackType = "PUSA";
-                    else if (Down()) attackType = "PDSA";
-                    else if (Mid()) attackType = "PMSA";
-                }
-            }
+            else if (PlayerMove.dashing) attackType = "PMS"; //dash , forward dash movement
             else attackType = null;
         }
         if (playerWeapon == "DuelKnife")
         {
-            if (PlayerAttack.normalAttack)
+            if (PlayerAttack.specialAttack || PlayerAttack.normalAttack)
             {
-                if (PlayerMove.isGrounded)
-                {
-                    if (Up()) attackType = "KUN";
-                    else if (Down()) attackType = "KDN";
-                    else if (Mid()) attackType = "KMN";
+                    if (PlayerMove.isGrounded)
+                    {
+                        if (Up()) attackType = "KUS"; //up movement
+                        else if (Down()) attackType = "KDN"; // too lazy to change anim condition so S become N , stop movement
+                        else if (Mid()) attackType = "KMS"; // stop movement
+                    }
+                    else
+                    {
+                        if (Up()) attackType = "KUSA"; // have aura attack
+                        else if (Down()) attackType = "KDSA"; //have down-forward movement
+                        else if (Mid()) attackType = "KMSA"; // have forward movement while on 
+                    }
                 }
-                else
-                {
-                    if (Up()) attackType = "KUNA";
-                    else if (Down()) attackType = "KDNA";
-                    else if (Mid()) attackType = "KMNA";
-                }
-            }
-            else if (PlayerAttack.specialAttack)
-            {
-                if (PlayerMove.isGrounded)
-                {
-                    if (Up()) attackType = "KUS";
-                    else if (Down()) attackType = "KDS";
-                    else if (Mid()) attackType = "KMS";
-                }
-                else
-                {
-                    if (Up()) attackType = "KUSA";
-                    else if (Down()) attackType = "KDSA";
-                    else if (Mid()) attackType = "KMSA";
-                }
-            }
             else attackType = null;
         }
     }
