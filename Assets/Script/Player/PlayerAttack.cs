@@ -25,7 +25,23 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
+        UpdateCollider();
         Attack();
+        Debug.Log(attackTimer);
+        
+    }
+
+    void UpdateCollider()
+    {
+        if (PlayerInfo.playerWeapon ==  "DuelKnife")
+        {
+            attackCd = 0.1f;
+        }
+        else if (PlayerInfo.playerWeapon == "GreatSword") attackCd = 0.5f;
+        else
+        {
+            attackCd = 0.3f;
+        }
     }
 
     void Attack() //get attack input and determind attack colloder and state
@@ -44,21 +60,21 @@ public class PlayerAttack : MonoBehaviour
             attackTimer = attackCd;
             attackTrigger.enabled = true;
         }
-
         if (pAttacking) //if attacking start attack timer to determine attack state
         {
             if (attackTimer > 0)
-            {
-                attackTimer -= Time.deltaTime;
+                {
+                    attackTimer -= Time.deltaTime;
 
-            }
+                }
             else
-            {
-                normalAttack = false;
-                specialAttack = false;
-                pAttacking = false;
-                attackTrigger.enabled = false;
-            }
+                {
+                    attackTimer = attackCd;
+                    normalAttack = false;
+                    specialAttack = false;
+                    pAttacking = false;
+                    attackTrigger.enabled = false;
+                }
         }
     }
 }

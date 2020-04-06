@@ -54,7 +54,7 @@ public class PlayerMove : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkGroundRadius,whatIsGround);   // calculate collider using OverLabCircle(position,radius,layer)
         FaceCheck();
         AttackMovement();
-        Debug.Log(PlayerRigid.velocity.y);
+        //Debug.Log(PlayerRigid.velocity.y);
     }
 
 
@@ -150,7 +150,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (playerSpeed <= playerSpeedReserve)
             {
-                playerSpeed += 15;
+                if (PlayerInfo.playerWeapon == "spear") playerSpeed += 5;
+                else playerSpeed += 15;
             }
             // playerSpeed = playerSpeedReserve;
         }
@@ -187,6 +188,14 @@ public class PlayerMove : MonoBehaviour
                 else PlayerRigid.velocity = new Vector2(-10f, -10f);
             }
 
+        }
+        else if (PlayerInfo.attackType == "KMSA")
+        {
+            if (PlayerRigid.velocity.y <= 5f)
+            {
+                if (faceRight) PlayerRigid.velocity = new Vector2(20f, PlayerRigid.velocity.y + 0.3f);
+                else PlayerRigid.velocity = new Vector2(-20f, PlayerRigid.velocity.y + 0.3f);
+            }
         }
 
 

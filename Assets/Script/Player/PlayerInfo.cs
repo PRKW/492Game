@@ -107,12 +107,9 @@ public class PlayerInfo : MonoBehaviour
         {
             if (PlayerAttack.specialAttack || PlayerAttack.normalAttack)
             {
-                if (PlayerMove.isGrounded)
-                {
                     if (Up()) attackType = "PUS"; //stop movement and push enemy up+slightly forward
                     else if (Down() && PlayerMove.isGrounded) attackType = "PDS"; // stop movement and will have something bombing
-                    else if (Mid()) attackType = "PMN"; // Change special to normal because lazy to change anim , stop movement
-                }
+                    else attackType = "PMN"; // Change special to normal because lazy to change anim , stop movement
             }
             else if (PlayerMove.dashing) attackType = "PMS"; //dash , forward dash movement
             else attackType = null;
@@ -131,7 +128,7 @@ public class PlayerInfo : MonoBehaviour
                     {
                         if (Up()) attackType = "KUSA"; // have aura attack
                         else if (Down()) attackType = "KDSA"; //have down-forward movement
-                        else if (Mid()) attackType = "KMSA"; // have forward movement while on 
+                        else if (Mid()) attackType = "KMSA"; // have forward movement while on air
                     }
                 }
             else attackType = null;

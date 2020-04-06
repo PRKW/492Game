@@ -23,7 +23,7 @@ public class EnemyMoveV2 : MonoBehaviour
     void Update()
     {
         moveDirection = Mathf.Sign(playerTarget.transform.position.x - transform.position.x); //
-        Debug.Log(moveDirection);
+        //Debug.Log(moveDirection);
         if(playerIsInRadius)
         {
             if(PlayerIsOnRight())
