@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 
     void UpdateCollider()
     {
+
         if (PlayerInfo.playerWeapon ==  "DuelKnife")
         {
             attackCd = 0.1f;
@@ -48,17 +49,20 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && !pAttacking) // when press z if not attacking do attack
         {
+
+            attackTrigger.enabled = true;
             pAttacking = true;
             normalAttack = true;
             attackTimer = attackCd;
-            attackTrigger.enabled = true;
+
         }
         if (Input.GetKeyDown(KeyCode.X) && !pAttacking)
         {
+            attackTrigger.enabled = true;
             pAttacking = true;
             specialAttack = true;
             attackTimer = attackCd;
-            attackTrigger.enabled = true;
+
         }
         if (pAttacking) //if attacking start attack timer to determine attack state
         {

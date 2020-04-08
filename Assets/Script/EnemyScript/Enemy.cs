@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     bool getHit;
     int playerDmg;
     [SerializeField] GameObject bloodEffect;
+    Rigidbody2D enemyRigid;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
             FindObjectOfType<GameSession>().AddCombo(1);
             TakeDamage(playerDmg);
             Instantiate(bloodEffect);
+
             if (enemyHealth <= 0)
             {
                 EnemyDead();
@@ -46,6 +48,15 @@ public class Enemy : MonoBehaviour
     {
         Destroy(this.gameObject);
         FindObjectOfType<GameSession>().AddScore(200);
+    }
+
+    void Knockback()
+    {
+
+    }
+    void stun()
+    {
+
     }
 
     void Dropitem()
