@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text hitText;
     [SerializeField] Text scoreText;
     [SerializeField] Text timeText;
+    [SerializeField] GameObject menuObject;
+    [SerializeField] Button firstBotton;
     int playerHP;
     int playerMaxHp;
     int playerCombo;
@@ -18,10 +22,13 @@ public class GameSession : MonoBehaviour
     bool isComboing;
     int previousMaxCombo;
     int maxCombo;
+    int finalScore;
+    public static bool isPause;
 
 
     void Start()
     {
+        isPause = false;
         playerHP = playerMaxHp;
         playerCombo = 0;
         playerMaxHp = 6;
@@ -29,18 +36,64 @@ public class GameSession : MonoBehaviour
         comboTimer = comboStartTime;
         isComboing = false;
         previousMaxCombo = 0;
+        playerScore = 100;
     }
 
     private void Update()
     {
+        if (Time.timeScale == 1) isPause = false;
+        else isPause = true;
+
         ResetCombo();
+        PauseMenu();
+        if (PressingPause())
+        {
+            PauseUnPause();
+        }
+       // Debug.Log(isPause);
     }
 
     private void FixedUpdate()
     {
         UpdateMaxCombo();
-        //Debug.Log(maxCombo);
+
         scoreText.text = playerScore.ToString("D5"); //set to 5 Digit
+    }
+    public bool PressingPause()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
+
+    void PauseMenu()
+    {
+        if(isPause)
+        {
+            menuObject.SetActive(true);
+
+
+        }
+        else menuObject.SetActive(false);
+    }
+
+    public void PauseUnPause()
+    {
+        if (!menuObject.activeInHierarchy) // if not pause
+        {
+            Time.timeScale = 0; // pause
+            firstBotton.Select();
+            firstBotton.OnSelect(null);
+        }
+        else
+        {
+            Time.timeScale = 1; // else resume
+            PlayerAttack.normalAttack = false;
+        }
+
+    }
+    
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     void UpdateHP(int number)

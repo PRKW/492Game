@@ -8,7 +8,9 @@ public class Enemy : MonoBehaviour
     int enemydamage;
     float enemySpeed;
     Animator anim;
-    bool getHit;
+    bool gettingHit;
+    float stunTime;
+    float stunTimer;
     int playerDmg;
     [SerializeField] GameObject bloodEffect;
     Rigidbody2D enemyRigid;
@@ -16,7 +18,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         //enemyHealth = 99;
+        stunTime = 2f;
+        stunTimer = stunTime ;
+        gettingHit = false;
         playerDmg = FindObjectOfType<PlayerInfo>().playerDmg;
+        enemyRigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,7 +30,10 @@ public class Enemy : MonoBehaviour
     {
 
     }
-
+    private void FixedUpdate()
+    {
+        stun();
+    }
     public void TakeDamage(int damage)
     {
         enemyHealth -= damage;
@@ -36,7 +45,8 @@ public class Enemy : MonoBehaviour
             FindObjectOfType<GameSession>().AddCombo(1);
             TakeDamage(playerDmg);
             Instantiate(bloodEffect);
-
+            Knockback();
+            gettingHit = true;
             if (enemyHealth <= 0)
             {
                 EnemyDead();
@@ -50,13 +60,30 @@ public class Enemy : MonoBehaviour
         FindObjectOfType<GameSession>().AddScore(200);
     }
 
-    void Knockback()
+    void ReactToPlayerAttack()
     {
 
     }
+    void Knockback()
+    {
+        enemyRigid.velocity = new Vector2(enemyRigid.velocity.x, 5f);
+    }
     void stun()
     {
-
+     if(gettingHit)
+        {
+            if(stunTimer > 0)
+            {
+                stunTimer -= Time.deltaTime;
+                enemyRigid.velocity = new Vector2(0f, enemyRigid.velocity.y);
+            }
+            else
+            {
+                gettingHit = false;
+                stunTimer = stunTime;
+            }
+        }
+   
     }
 
     void Dropitem()

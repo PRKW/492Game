@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     {
         UpdateCollider();
         Attack();
-        Debug.Log(attackTimer);
+        //Debug.Log(attackTimer);
         
     }
 
@@ -47,31 +47,33 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack() //get attack input and determind attack colloder and state
     {
-        if (Input.GetKeyDown(KeyCode.Z) && !pAttacking) // when press z if not attacking do attack
+        if (Time.timeScale == 1)
         {
+            if (Input.GetKeyDown(KeyCode.Z) && !pAttacking) // when press z if not attacking do attack
+            {
 
-            attackTrigger.enabled = true;
-            pAttacking = true;
-            normalAttack = true;
-            attackTimer = attackCd;
+                attackTrigger.enabled = true;
+                pAttacking = true;
+                normalAttack = true;
+                attackTimer = attackCd;
 
-        }
-        if (Input.GetKeyDown(KeyCode.X) && !pAttacking)
-        {
-            attackTrigger.enabled = true;
-            pAttacking = true;
-            specialAttack = true;
-            attackTimer = attackCd;
+            }
+            if (Input.GetKeyDown(KeyCode.X) && !pAttacking)
+            {
+                attackTrigger.enabled = true;
+                pAttacking = true;
+                specialAttack = true;
+                attackTimer = attackCd;
 
-        }
-        if (pAttacking) //if attacking start attack timer to determine attack state
-        {
-            if (attackTimer > 0)
+            }
+            if (pAttacking) //if attacking start attack timer to determine attack state
+            {
+                if (attackTimer > 0)
                 {
                     attackTimer -= Time.deltaTime;
 
                 }
-            else
+                else
                 {
                     attackTimer = attackCd;
                     normalAttack = false;
@@ -79,6 +81,7 @@ public class PlayerAttack : MonoBehaviour
                     pAttacking = false;
                     attackTrigger.enabled = false;
                 }
+            }
         }
     }
 }

@@ -43,10 +43,12 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Move();
-        Dash();
-        Jump();
+        if(Time.timeScale == 1)
+        { 
+            Move();
+            Dash();
+            Jump();
+        }
     }
 
     private void FixedUpdate()
