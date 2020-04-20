@@ -20,8 +20,9 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text endBonusScoreText;
     [SerializeField] Button endScreenButton;
     [SerializeField] GameObject endScreenObject;
-    int playerHP;
-    int playerMaxHp;
+    [SerializeField] GameObject onDeadObject;
+    [SerializeField] Button deadButton;
+    [SerializeField] GameObject[] hpObject;
     int playerCombo;
     int playerScore;
     float comboStartTime;
@@ -30,22 +31,27 @@ public class GameSession : MonoBehaviour
     int previousMaxCombo;
     int maxCombo;
     int bonusScore;
-    int finalScore;
+    public static int finalScore;
     public static bool isPause;
+    bool playerDead;
 
-
+    private void Awake()
+    {
+        Time.timeScale = 1;
+        menuObject.SetActive(false);
+        onDeadObject.SetActive(false);
+    }
     void Start()
     {
+        playerDead = false;
         stageClear = false;
         isPause = false;
-        playerHP = playerMaxHp;
         playerCombo = 0;
-        playerMaxHp = 6;
         comboStartTime = 2f;
         comboTimer = comboStartTime;
         isComboing = false;
         previousMaxCombo = 0;
-        playerScore = 100;
+        playerScore = 0;
         finalScore = 0;
         bonusScore = 0;
     }
@@ -54,14 +60,19 @@ public class GameSession : MonoBehaviour
     {
         if (Time.timeScale == 1) isPause = false;
         else isPause = true;
-
+        UpdateHP();
         ResetCombo();
         PauseMenu();
         if (PressingPause())
         {
             PauseUnPause();
         }
-
+        if(playerDead)
+        {
+            onDeadObject.SetActive(true);
+            deadButton.Select();
+            deadButton.OnSelect(null);
+        }
       //  Debug.Log(stageClear);
     }
 
@@ -107,9 +118,75 @@ public class GameSession : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    void UpdateHP(int number)
+    void UpdateHP()
     {
-        playerHP += number;
+        if (PlayerInfo.playerHP == 6)
+        {
+            for(int i = 0; i < 6; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+        }
+        else if (PlayerInfo.playerHP == 5)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+            hpObject[5].SetActive(false);
+        }
+        else if (PlayerInfo.playerHP == 4)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+            for(int i = 5; i > 3; i--)
+            {
+                hpObject[i].SetActive(false);
+            }
+        }
+        else if (PlayerInfo.playerHP == 3)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+            for (int i = 5; i > 2; i--)
+            {
+                hpObject[i].SetActive(false);
+            }
+        }
+        else if (PlayerInfo.playerHP == 2)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+            for (int i = 5; i > 1; i--)
+            {
+                hpObject[i].SetActive(false);
+            }
+        }
+        else if (PlayerInfo.playerHP == 1)
+        {
+            for (int i = 0; i < 1; i++)
+            {
+                hpObject[i].SetActive(true);
+            }
+            for (int i = 5; i > 0; i--)
+            {
+                hpObject[i].SetActive(false);
+            }
+        }
+        else if (PlayerInfo.playerHP <= 0)
+        {
+            for (int i = 5; i >= 0; i--)
+            {
+                hpObject[i].SetActive(false);
+            }
+            playerDead = true;
+        }
     }
     public void AddScore(int score)
     {

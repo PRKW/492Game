@@ -15,14 +15,16 @@ public class PlayerAttack : MonoBehaviour
     bool up;
     private void Awake()
     {
-        attackTimerEqual = false;
-        pAttacking = false;
-        specialAttack = false;
         attackTrigger.enabled = false; //make sure that attack collider is disable before game start
         playerInfo = GetComponent<PlayerInfo>();
         up = playerInfo.Up();
     }
-
+    private void Start()
+    {
+        attackTimerEqual = false;
+        pAttacking = false;
+        specialAttack = false;
+    }
     void Update()
     {
         UpdateCollider();

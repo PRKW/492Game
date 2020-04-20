@@ -74,7 +74,8 @@ public class PlayerAnimator : MonoBehaviour
             anim.SetBool("NormalAttack", false);
             anim.SetBool("SpecialAttack", false);
         }
-
+        /// Damaged State ///
+        anim.SetBool("Damaged",PlayerInfo.attacked);
     }
     void DashEffect()
     {

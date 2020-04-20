@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf63c92071f8df45a4affee3c1abf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 500
+  enemyHealth: 8
   bloodEffect: {fileID: 7749947106311265201, guid: 18054ae26ce10414881032f5ff9d6f81,
     type: 3}
 --- !u!114 &1056308360042475973

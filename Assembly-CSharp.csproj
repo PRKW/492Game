@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\Boss1Attack.cs" />
     <Compile Include="Assets\Script\CanvasScript\GameSession.cs" />
     <Compile Include="Assets\Script\CanvasScript\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Script\CanvasScript\Scoremanager.cs" />
     <Compile Include="Assets\Script\CanvasScript\UIScript.cs" />
     <Compile Include="Assets\Script\EnemyScript\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyAIPartControl.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Test\scoretest.cs" />
     <None Include="Assets\Sprites\UI\Pixel Font - Tripfive\_README.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/eieizaa/OneDrive/492Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

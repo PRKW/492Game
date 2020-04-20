@@ -5,24 +5,35 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     float invincibleTime;
+    float invincibleTimer;
+    public static int playerHP;
     [HideInInspector] public int playerDmg;
     [HideInInspector] public static string playerWeapon;
+    PlayerMove playerMove;
     public static string attackType;
+    public static bool attacked;
 
     // Start is called before the first frame update
     private void Awake()
     {
         playerWeapon = "DuelKnife";
+        attacked = false;
     }
     void Start()
     {
         playerDmg = 2;
+        playerMove = GetComponent<PlayerMove>();
+        playerHP = 6;
+        invincibleTime = 1f;
+        invincibleTimer = invincibleTime;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdatePlayerInfo();
+        Attacked();
+        Debug.Log(playerHP);
 
        // Debug.Log(attackType);
     }
@@ -132,6 +143,32 @@ public class PlayerInfo : MonoBehaviour
                     }
                 }
             else attackType = null;
+        }
+    }
+
+    void Attacked()
+    {
+        if(attacked == true)
+        {
+            invincibleTimer -= Time.deltaTime;
+        }
+        if(invincibleTimer <= 0)
+        {
+            attacked = false;
+            invincibleTimer = invincibleTime;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D atkCol)
+    {
+        if (atkCol.gameObject.tag == "EnemyAttack")
+        {
+            if (attacked == false)
+            {
+                playerMove.GetAttackedMovement();
+                playerHP -= 1;
+                attacked = true;
+            }
         }
     }
 }

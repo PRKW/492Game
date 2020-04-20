@@ -84,9 +84,4 @@ public class Enemy : MonoBehaviour
         }
    
     }
-
-    void Dropitem()
-    {
-
-    }
 }

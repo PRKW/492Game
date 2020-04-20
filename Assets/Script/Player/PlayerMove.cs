@@ -136,6 +136,11 @@ public class PlayerMove : MonoBehaviour
         }
     }   //Jump function
 
+    public void GetAttackedMovement()
+    {
+        PlayerRigid.velocity = new Vector2( 0 , PlayerRigid.velocity.y + 5f);
+    }
+
     void AttackMovement() //a lot of special attack make player move so i code here
     {
         if(PlayerAttack.pAttacking && isGrounded) // if player attack on ground

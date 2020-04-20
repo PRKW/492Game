@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     [SerializeField] GameObject bloodEffect;
-    [SerializeField]int bossHealth;
+    [SerializeField] int bossHealth;
     // Start is called before the first frame update
     void Start()
     {
