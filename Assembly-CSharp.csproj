@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Boss.cs" />
     <Compile Include="Assets\Script\Boss1Attack.cs" />
+    <Compile Include="Assets\Script\Boss3Attack.cs" />
     <Compile Include="Assets\Script\CanvasScript\GameSession.cs" />
     <Compile Include="Assets\Script\CanvasScript\NewBehaviourScript.cs" />
     <Compile Include="Assets\Script\CanvasScript\Scoremanager.cs" />
@@ -73,12 +74,14 @@
     <Compile Include="Assets\Script\EnemyScript\EnemyMove.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMove3.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMoveV2.cs" />
+    <Compile Include="Assets\Script\Flag.cs" />
     <Compile Include="Assets\Script\MainMenu.cs" />
     <Compile Include="Assets\Script\Player\DashEffect.cs" />
     <Compile Include="Assets\Script\Player\PlayerAnimator.cs" />
     <Compile Include="Assets\Script\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Script\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Script\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Script\Targetplayer.cs" />
     <Compile Include="Assets\Script\Test\scoretest.cs" />
     <None Include="Assets\Sprites\UI\Pixel Font - Tripfive\_README.txt" />
     <Reference Include="Unity.Timeline.Editor">
