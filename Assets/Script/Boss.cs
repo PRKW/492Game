@@ -6,14 +6,18 @@ public class Boss : MonoBehaviour
 {
     [SerializeField] GameObject bloodEffect;
     [SerializeField] int bossHealth;
+    public static int currentBossHealth;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        currentBossHealth = bossHealth;
+    }
     void Start()
     {
-        bossHealth = 2;
     }
     public void TakeDamage(int damage)
     {
-        bossHealth -= damage;
+        currentBossHealth -= damage;
     }
 
     private void OnTriggerEnter2D(Collider2D atkCol)
@@ -28,7 +32,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bossHealth <= 0)
+        if (currentBossHealth <= 0)
         {
             GameSession.stageClear = true;
         }

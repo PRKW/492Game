@@ -24,7 +24,7 @@ public class PlayerInfo : MonoBehaviour
         playerDmg = 2;
         playerMove = GetComponent<PlayerMove>();
         playerHP = 6;
-        invincibleTime = 1f;
+        invincibleTime = 2f;
         invincibleTimer = invincibleTime;
     }
 
@@ -33,7 +33,7 @@ public class PlayerInfo : MonoBehaviour
     {
         UpdatePlayerInfo();
         Attacked();
-        Debug.Log(playerHP);
+        //Debug.Log(playerHP);
 
        // Debug.Log(attackType);
     }
@@ -83,11 +83,11 @@ public class PlayerInfo : MonoBehaviour
         }
         if (playerWeapon == "Spear")
         {
-            playerDmg = 3;
+            playerDmg = 4;
         }
         if (playerWeapon == "GreatSword")
         {
-            playerDmg = 6;
+            playerDmg = 8;
         }
     }
 
