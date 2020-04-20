@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     bool gettingHit;
     float stunTime;
     float stunTimer;
-    int playerDmg;
+    // [SerializeField] bool isBoss;
     [SerializeField] GameObject bloodEffect;
     Rigidbody2D enemyRigid;
     // Start is called before the first frame update
@@ -21,14 +21,13 @@ public class Enemy : MonoBehaviour
         stunTime = 2f;
         stunTimer = stunTime ;
         gettingHit = false;
-        playerDmg = FindObjectOfType<PlayerInfo>().playerDmg;
         enemyRigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(FindObjectOfType<PlayerInfo>().playerDmg);
     }
     private void FixedUpdate()
     {
@@ -43,8 +42,8 @@ public class Enemy : MonoBehaviour
         if (atkCol.gameObject.tag == "AttackTrigger")
         {
             FindObjectOfType<GameSession>().AddCombo(1);
-            TakeDamage(playerDmg);
-            Instantiate(bloodEffect);
+            TakeDamage(FindObjectOfType<PlayerInfo>().playerDmg);
+            Instantiate(bloodEffect , transform.position , Quaternion.identity);
             Knockback();
             gettingHit = true;
             if (enemyHealth <= 0)

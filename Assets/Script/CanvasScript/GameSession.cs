@@ -13,6 +13,13 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text timeText;
     [SerializeField] GameObject menuObject;
     [SerializeField] Button firstBotton;
+    [HideInInspector] public static bool stageClear;
+    [SerializeField] Text endMaxComboText;
+    [SerializeField] Text endScoreText;
+    [SerializeField] Text endFinalScoreText;
+    [SerializeField] Text endBonusScoreText;
+    [SerializeField] Button endScreenButton;
+    [SerializeField] GameObject endScreenObject;
     int playerHP;
     int playerMaxHp;
     int playerCombo;
@@ -22,12 +29,14 @@ public class GameSession : MonoBehaviour
     bool isComboing;
     int previousMaxCombo;
     int maxCombo;
+    int bonusScore;
     int finalScore;
     public static bool isPause;
 
 
     void Start()
     {
+        stageClear = false;
         isPause = false;
         playerHP = playerMaxHp;
         playerCombo = 0;
@@ -37,6 +46,8 @@ public class GameSession : MonoBehaviour
         isComboing = false;
         previousMaxCombo = 0;
         playerScore = 100;
+        finalScore = 0;
+        bonusScore = 0;
     }
 
     private void Update()
@@ -50,14 +61,15 @@ public class GameSession : MonoBehaviour
         {
             PauseUnPause();
         }
-       // Debug.Log(isPause);
+
+      //  Debug.Log(stageClear);
     }
 
     private void FixedUpdate()
     {
         UpdateMaxCombo();
-
         scoreText.text = playerScore.ToString("D5"); //set to 5 Digit
+        dump();
     }
     public bool PressingPause()
     {
@@ -79,14 +91,13 @@ public class GameSession : MonoBehaviour
     {
         if (!menuObject.activeInHierarchy) // if not pause
         {
-            Time.timeScale = 0; // pause
+            Time.timeScale = 0f; // pause
             firstBotton.Select();
             firstBotton.OnSelect(null);
         }
         else
         {
-            Time.timeScale = 1; // else resume
-            PlayerAttack.normalAttack = false;
+            Time.timeScale = 1f; // else resume
         }
 
     }
@@ -149,6 +160,25 @@ public class GameSession : MonoBehaviour
         {
             comboText.enabled = false;
             hitText.enabled = false;
+        }
+    }
+
+    void dump()
+    {
+        bonusScore = maxCombo * 100;
+        finalScore = playerScore + bonusScore;
+        endMaxComboText.text = maxCombo.ToString();
+        endScoreText.text = playerScore.ToString();
+        endBonusScoreText.text = bonusScore.ToString();
+        endFinalScoreText.text = finalScore.ToString();
+
+
+        if (stageClear)
+        {
+            endScreenObject.SetActive(true);
+            Time.timeScale = 0;
+            endScreenButton.Select();
+            endScreenButton.OnSelect(null);
         }
     }
 }

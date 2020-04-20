@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] float playerSpeed=500f;
+    float playerSpeed;
     float playerSpeedReserve;
-    [SerializeField] float playerJumpPower=10f;
-    [SerializeField] float playerDashPower = 5000f;
+    float playerJumpPower;
+    float playerDashPower;
     Rigidbody2D PlayerRigid;
     [HideInInspector] public static bool isGrounded;
     [SerializeField] Transform groundCheck;
@@ -27,6 +27,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
+        playerDashPower = 5000f;
+        playerSpeed = 500f;
+        playerJumpPower = 10f;
         floatTime = 0.05f;
         isFloating = false;
         done = false;

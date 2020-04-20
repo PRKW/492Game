@@ -72,11 +72,11 @@ public class PlayerInfo : MonoBehaviour
         }
         if (playerWeapon == "Spear")
         {
-            playerDmg = 2;
+            playerDmg = 3;
         }
         if (playerWeapon == "GreatSword")
         {
-            playerDmg = 3;
+            playerDmg = 6;
         }
     }
 
