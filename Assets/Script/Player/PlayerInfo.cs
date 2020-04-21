@@ -9,6 +9,7 @@ public class PlayerInfo : MonoBehaviour
     public static int playerHP;
     [HideInInspector] public int playerDmg;
     [HideInInspector] public static string playerWeapon;
+    [SerializeField] GameObject gethit;
     PlayerMove playerMove;
     public static string attackType;
     public static bool attacked;
@@ -168,6 +169,7 @@ public class PlayerInfo : MonoBehaviour
                 playerMove.GetAttackedMovement();
                 playerHP -= 1;
                 attacked = true;
+                Instantiate(gethit);
             }
         }
     }

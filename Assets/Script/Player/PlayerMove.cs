@@ -27,9 +27,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        playerDashPower = 5000f;
-        playerSpeed = 500f;
-        playerJumpPower = 10f;
+        playerDashPower = 10000f;
+        playerSpeed = 1000f;
+        playerJumpPower = 12f;
         floatTime = 0.05f;
         isFloating = false;
         done = false;
@@ -145,12 +145,12 @@ public class PlayerMove : MonoBehaviour
     {
         if(PlayerAttack.pAttacking && isGrounded) // if player attack on ground
         {
-            if (playerSpeed > 100) playerSpeed -= 50;
+            if (playerSpeed > 100) playerSpeed -= 500;
             else if (playerSpeed <= 100) playerSpeed = 100;
         }
         else if (PlayerAttack.pAttacking && !isGrounded) // if player attack on air
         {
-            if (playerSpeed > 70) playerSpeed -= 50;
+            if (playerSpeed > 70) playerSpeed -= 500;
             else if (playerSpeed <= 70) playerSpeed = 70;
             if (!isFloating) isFloating = true;
 
@@ -160,8 +160,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (playerSpeed <= playerSpeedReserve)
             {
-                if (PlayerInfo.playerWeapon == "spear") playerSpeed += 5;
-                else playerSpeed += 15;
+                if (PlayerInfo.playerWeapon == "spear") playerSpeed += 100;
+                else playerSpeed += 200;
             }
             // playerSpeed = playerSpeedReserve;
         }

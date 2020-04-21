@@ -76,6 +76,7 @@
     <Compile Include="Assets\Script\EnemyScript\EnemyMove3.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMoveV2.cs" />
     <Compile Include="Assets\Script\Flag.cs" />
+    <Compile Include="Assets\Script\HideCurser.cs" />
     <Compile Include="Assets\Script\MainMenu.cs" />
     <Compile Include="Assets\Script\Player\DashEffect.cs" />
     <Compile Include="Assets\Script\Player\PlayerAnimator.cs" />
