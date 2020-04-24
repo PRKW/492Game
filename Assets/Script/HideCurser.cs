@@ -9,6 +9,7 @@ public class HideCurser : MonoBehaviour
     {
         Cursor.visible = false;
         DontDestroyOnLoad(this.gameObject);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

@@ -23,6 +23,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject onDeadObject;
     [SerializeField] Button deadButton;
     [SerializeField] GameObject[] hpObject;
+    [SerializeField] Image comboBar;
     int playerCombo;
     int playerScore;
     float comboStartTime;
@@ -232,11 +233,14 @@ public class GameSession : MonoBehaviour
         {
             comboText.enabled = true;
             hitText.enabled = true;
+            comboBar.enabled = true;
+            comboBar.fillAmount = (comboTimer / comboStartTime);
         }
         else
         {
             comboText.enabled = false;
             hitText.enabled = false;
+            comboBar.enabled = false;
         }
     }
 

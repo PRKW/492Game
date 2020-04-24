@@ -69,7 +69,6 @@
     <Compile Include="Assets\Script\CanvasScript\GameSession.cs" />
     <Compile Include="Assets\Script\CanvasScript\NewBehaviourScript.cs" />
     <Compile Include="Assets\Script\CanvasScript\Scoremanager.cs" />
-    <Compile Include="Assets\Script\CanvasScript\UIScript.cs" />
     <Compile Include="Assets\Script\EnemyScript\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyAIPartControl.cs" />
     <Compile Include="Assets\Script\EnemyScript\EnemyMove.cs" />

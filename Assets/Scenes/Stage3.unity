@@ -3715,6 +3715,7 @@ MonoBehaviour:
   - {fileID: 1795991610}
   - {fileID: 14729948}
   - {fileID: 401925660}
+  comboBar: {fileID: 677978672}
 --- !u!1 &401925660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,8 +3928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.483002}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -66, y: -118}
-  m_SizeDelta: {x: 126.93005, y: 84.73}
+  m_AnchoredPosition: {x: -260, y: -115}
+  m_SizeDelta: {x: 440, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485119381
 MonoBehaviour:
@@ -3950,7 +3951,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
-    m_FontSize: 44
+    m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4088,6 +4089,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &677978670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677978671}
+  - component: {fileID: 677978673}
+  - component: {fileID: 677978672}
+  m_Layer: 5
+  m_Name: Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &677978671
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677978670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2017769347}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -166.2, y: 61.4}
+  m_SizeDelta: {x: 220.73, y: 220.73}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &677978672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677978670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.5196967, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 41dc8464b673e50499fb922bf58d0a9a, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &677978673
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677978670}
+  m_CullTransparentMesh: 0
 --- !u!1 &716017485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4526,7 +4600,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6845,6 +6919,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy3 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8236503648369366406, guid: 07d6c4b1ec20f4944ba4883b86fd01a8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236503648369366428, guid: 07d6c4b1ec20f4944ba4883b86fd01a8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236503648369366428, guid: 07d6c4b1ec20f4944ba4883b86fd01a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8236503648369366430, guid: 07d6c4b1ec20f4944ba4883b86fd01a8,
         type: 3}
       propertyPath: playerCheckRadius
@@ -6983,6 +7072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDmg: 0
+  gethit: {fileID: 5502937415150721981, guid: c3d5bbdbfcd58084bb7da6c82d0e8788, type: 3}
 --- !u!114 &1650724850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7287,7 +7377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAA4IezdK28HdQIAACQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzg1jGwK4t9YhpId8TEgnF1+EtMYaZMkjyQGS4b93JRvsUF8sv/16+3blLyKUrYE5bVZG8EfNgfwcEX8mP0a98QEOdKvVWnzC2eddcFd6Jxp8XqkTGvHYh1ldgTOC/VJb6Z0jBBslCm2qJd9Cpq2zCBdUWkCT0c5HK4S+RuSAr5vUhxzxlMz96RNPaTQ64ZGBcmB618k49c/i7N9+pl3QfBzN5ultOpktb+JpSNAoJmlVA/fd9HmSxXiadEliTJoEZ4Xddn7ROPFZmZZS2I4tccc6qJHR2jbYKzpwQbH7QNGLUYLYls4XGAY/F4UF10lj6PFOGBSxzUp+61bZitpdS/CDysbXSW5ngVab9PE/+00czIXR1cO5bhz5Gq4UbPdKj4xaN5B+CN99J96oPZU7upHwXoJ60iujG8XR6EzjQxsLyV3/eWktK4HterylegU2dS/8ZdLjyWIaL2Z+VNG8m59v6BSkOGRSVJswh2kLrKUO4oddAYOT+oPswybZLi+intJfC290O1y5znAvjHVo6lpWnutGN8a7kmUQ0LfWuEwbBQHuOqhBUemOL5jGXc/zyjYoe2W5p/5ydcU72/nOXIUEuPePoivTi95fJmdLvX8EWz43TgoFPWlveEKdMq1Uu25DTc5h68YUlA3Cto3g3/eMzBc8pgkrJhw2k3nEcGJFhACb0ylM04SSsIhCYZ9UvrREO3lwaqpPrnDpzv+c0crQOqw+N3S/Ep+VHhIUqtBrZgDUc5viwhwMVsFrypdcoEJrcE6oMHDylROp2Q54fqmZh1aXB2do3mfJSS0+tPNITrLwl8nJiZz+AVBLAwQUAAAICAAAOCHsNFdsg2sAAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNRRUEovSizIKAaKgDmlmSkgdrSSuUWKYaJRcppxSmqSsblBsq6BeZoBUCDZPNEk1cTSKFEpFqi+pLIg1S8xNxWiJyCxJCMtMy8lMy9dz70oM8UdZLRSbC0AUEsBAi0AFAAACAgAADgh7N0rbwd1AgAAJAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAADgh7DRXbINrAAAAeAAAAAkAJAAAAAAAAAAAAAAAwgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB4AwAAAAA=
+    dataString: UEsDBBQAAAgIAAA4IexWGGfoVQIAAPkEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzk3GGDqE3lpDSA+ETGgnF1+EtcYaZMmjjwDJ8N+7kmXs0BPi7dvd91YrfxIuTQOFVXqlOVsrBuTHiPgz+Tbqg09wonslt/wDOs4bZ7byJBo4r9RyhfjYpxlVg9W8+Cn3wpMTBJ3kpdL1ku0hU8YahEsqDGBIK+uzJUKfI3LCn7u5TznjKZ350wee5snogscCpAXdU6eROIm0luVkIWjdAPOSe3L6cD9NY8L4+/1kFsgSLUVecp/OfRMlBDdRErHnJljOaGMcGkIC4xQtBh3ecQV8X1nfYJi8KUsDNvrX9LzgGifVViW/VDu+mppDK/CdCgdXB23J9X/Ru3EIl1rVT13XceI72IoXh1d6Lqixg+kO4cVX2U4eqTjQnYC3CuSzWmnlJMOg1c6nOgPpov97NZZVUBx6vJV6A7qmH3t3md1Veg+X4P2UCV7vwuCnLbAVKkw7bABovJrfKDjsh4klEPUq/hr4Q/fDRYqBR66NxVB0Kb28nXLaU8kyzMy7cTZTWkKAo+gGJBX2/IJl7O0F3sQGbW8ij9Q/mdg8xrqXcJMS4J6fJDehF3W8Xpap1HENpto4K7iEXrQPPOOcMiVlu1/DmXRpW6dLWgzS9o6zr6tFZg9sTNOinDDYTWZJcZfMygSBYkanMJ2nlITd4xJ9UvHSCo3jwVuTfXGJe9Z9SUYrTZuw60zT44p/1Gowci5LtS00gNy0Fa7CQWMTfJZsyTgOaAvWchnum3zmRKjiACy/FsqD0+XJapr3VXLS8HdlPZKTLHw6cnIhl39QSwMEFAAACAgAADgh7DRXbINrAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTUUVBKL0osyCgGioA5pZkpIHa0krlFimGiUXKacUpqkrG5QbKugXmaAVAg2TzRJNXE0ihRKRaovqSyINUvMTcVoicgsSQjLTMvJTMvXc+9KDPFHWS0UmwtAFBLAQItABQAAAgIAAA4IexWGGfoVQIAAPkEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAA4Iew0V2yDawAAAHgAAAAJACQAAAAAAAAAAAAAAKICAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWAMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -19490,13 +19580,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: 0.18638104, w: 0.9824776}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 677978671}
   m_Father: {fileID: 300615264}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.483002}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -111.9}
+  m_AnchoredPosition: {x: -40, y: -111}
   m_SizeDelta: {x: 126.93005, y: 84.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017769348
@@ -19519,7 +19610,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
-    m_FontSize: 44
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

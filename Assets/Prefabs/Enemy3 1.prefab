@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 8236503648369366428}
   - component: {fileID: 8236503648369366430}
   - component: {fileID: 3012963115796178406}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Enemy3 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf63c92071f8df45a4affee3c1abf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 8
+  enemyHealth: 999
   bloodEffect: {fileID: 7749947106311265201, guid: 18054ae26ce10414881032f5ff9d6f81,
     type: 3}
 --- !u!114 &8236503648369366429
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd72eca24fc625428d6fb76bc148125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCheckRadius: 7.9
+  playerCheckRadius: 14.69
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 1024
